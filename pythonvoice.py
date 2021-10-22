@@ -6,27 +6,32 @@ from PyQt5.QtWebEngineWidgets import *
 from translate import Translator
 
 
-
+def talk(talk):
+    engine.say(talk)
+    return talk
+def run():
+    run = engine.runAndWait()
+    return  run  
 
 
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[1].id)
-engine.say("WELCOME to audisankara college of engineering in gudur",)
-engine.say("enter a student name:")
-engine.runAndWait()
+talk("WELCOME to audisankara college of engineering in gudur")
+talk("enter a student name:")
+run()
 
 user = input("enter a student name:")
 gm = (user," enter a year of studying")
-engine.say(gm)
-engine.runAndWait()
+talk(gm)
+run()
 year = int(input("enter a year of studying:"))
 present = 0
 
 
 def options():
-    engine.say("please select top of  the list")
-    engine.runAndWait()
+    talk("please select top of  the list")
+    run()
     print(user,"welcome to hp college")
     print("enter 'cls' (class) 'tp'(topic) 'a'(adentance) 'data'(details) 'internet'(browser) 'trans'(translator) or 'q'(quit)")
 
@@ -39,8 +44,8 @@ command = str(select())
 
 while command != 'q':
     if command == 'cls':
-        engine.say("hey you select class")
-        engine.runAndWait()
+        talk("hey you select class")
+        run()
         if year == 2:
             print(year,'top of building in our college')
             command = str(select())
@@ -52,13 +57,13 @@ while command != 'q':
             command = str(select())
         else:
 
-            engine.say(" invalid selected year")
-            engine.runAndWait()
+            talk(" invalid selected year")
+            run()
         command = str(select())
 
     elif command == 'tp':
-        engine.say("hey you select topics")
-        engine.runAndWait()
+        talk("hey you select topics")
+        run()
         if year == 2:
             print("1.co,2.se,3.java,4.database")
         elif year == 3:
@@ -67,12 +72,12 @@ while command != 'q':
             print("projects")
         else:
 
-            engine.say(" there no topics selected year")
-            engine.runAndWait()
+            talk(" there no topics selected year")
+            run()
         command = str(select())
     elif command == 'a':
-        engine.say("hey you select attendence")
-        engine.runAndWait()
+        talk("hey you select attendence")
+        run()
         month = 31
         at = int(input(" how many days absentance in this month:"))
         present = month - at
@@ -84,8 +89,8 @@ while command != 'q':
             print("enter valid days")
             print(at)
     elif command == 'data':
-        engine.say("hey you select details")
-        engine.runAndWait()
+        talk("hey you select details")
+        run()
 
         print("STUDENT NAME:",user)
         print("YEAR",year)
@@ -96,8 +101,8 @@ while command != 'q':
         command = str(select())
 
     elif command == 'internet':
-        engine.say("hello you are entered into internet")
-        engine.runAndWait()
+        talk("hello you are entered into internet")
+        run()
 
 
 
@@ -161,21 +166,21 @@ while command != 'q':
         command = str(select())
 
     elif command == 'trans':
-        engine.say("you are entered into translation")
-        engine.runAndWait()
+        talk("you are entered into translation")
+        run()
 
         translate = Translator(from_lang=str(input("enter a language from translate:")), to_lang=str(input("enter a language to translate")))
         translate = translate.translate(input("enter a word:"))
-        engine.say(translate)
-        engine.runAndWait()
+        talk(translate)
+        run()
         print(translate)
         command = str(select())
 
 
     else:
 
-        engine.say(" enter valid option")
-        engine.runAndWait()
+        talk(" enter valid option")
+        run()
         command = str(select())
 
 
@@ -183,6 +188,6 @@ while command != 'q':
 
 else:
 
-    engine.say("thanks for using our application")
-    engine.say("see you again")
-    engine.runAndWait()
+    talk("thanks for using our application")
+    talk("see you again")
+    run()
